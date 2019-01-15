@@ -24,37 +24,49 @@ public class Register {
 			Item itemX = allItems.getValidItem('X');
 			Item itemY = allItems.getValidItem('Y');
 			Item itemZ = allItems.getValidItem('Z');
-			total += itemsInBasket.getOrDefault(itemS,0);
-			total += itemsInBasket.getOrDefault(itemT,0);
-			total += itemsInBasket.getOrDefault(itemX,0);
-			total += itemsInBasket.getOrDefault(itemY,0);
-			total += itemsInBasket.getOrDefault(itemZ,0);
+			int totalS = itemsInBasket.getOrDefault(itemS,0);
+			int totalT = itemsInBasket.getOrDefault(itemT,0);
+			int totalX = itemsInBasket.getOrDefault(itemX,0);
+			int totalY = itemsInBasket.getOrDefault(itemY,0);
+			int totalZ = itemsInBasket.getOrDefault(itemZ,0);
+			total += totalS;
+			total += totalT;
+			total += totalX;
+			total += totalY;
+			total += totalZ;
 			while (total>=3) {
-				totalCost+=45;
 				int currGroup = 3; // allows items to be removed from count 3 at a time in price priority for best customer outcome
-				if (itemsInBasket.getOrDefault(itemZ,0)>=currGroup) itemsInBasket.replace(itemZ, itemsInBasket.get(itemZ)-currGroup);
-				else {
-					currGroup-=itemsInBasket.getOrDefault(itemZ,0);
-					if (itemsInBasket.getOrDefault(itemS,0)>=currGroup) itemsInBasket.replace(itemS, itemsInBasket.get(itemS)-currGroup);
-					else {
-						currGroup-=itemsInBasket.getOrDefault(itemS,0);
-						if (itemsInBasket.getOrDefault(itemT,0)>=currGroup) itemsInBasket.replace(itemT, itemsInBasket.get(itemT)-currGroup);
-						else {
-							currGroup-=itemsInBasket.getOrDefault(itemT,0);
-							if (itemsInBasket.getOrDefault(itemY,0)>=currGroup) itemsInBasket.replace(itemY, itemsInBasket.get(itemY)-currGroup);
-							else {
-								currGroup-=itemsInBasket.getOrDefault(itemY,0);
-								if (itemsInBasket.getOrDefault(itemX,0)>=currGroup) itemsInBasket.replace(itemX, itemsInBasket.get(itemX)-currGroup);
-								else {
-									currGroup-=itemsInBasket.getOrDefault(itemX,0);
 								
-								}
-							}
-						}
-					}
+				if (totalZ>0&&currGroup>0) {
+					if (totalZ>=3) currGroup-=3;
+					else currGroup-=totalZ;
 				}
+				
+				if (totalS>0&&currGroup>0) {
+					if (totalS>=3) currGroup-=3;
+					else currGroup-=totalS;
+				}
+				if (totalT>0&&currGroup>0) {
+					if (totalT>=3) currGroup-=3;
+					else currGroup-=totalT;
+				}
+				if (totalY>0&&currGroup>0) {
+					if (totalY>=3) currGroup-=3;
+					else currGroup-=totalY;
+				}
+				if (totalX>0&&currGroup>0) {
+					if (totalX>=3) currGroup-=3;
+					else currGroup-=totalX;
+				}
+				
+				totalCost+=45;				
 				total-=3;
 			}
+			itemsInBasket.replace(itemZ, totalZ);
+			itemsInBasket.replace(itemS, totalS);
+			itemsInBasket.replace(itemT, totalT);
+			itemsInBasket.replace(itemY, totalY);
+			itemsInBasket.replace(itemX, totalX);
 			System.out.println("curr:"+totalCost);
 			System.out.println(itemsInBasket.getOrDefault(itemX,0));
 			System.out.println(itemsInBasket.getOrDefault(itemY,0));
@@ -181,5 +193,6 @@ public class Register {
 			return totalCost;
 		}
 }
+
 
 
