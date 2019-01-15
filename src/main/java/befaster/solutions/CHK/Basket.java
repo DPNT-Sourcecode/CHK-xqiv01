@@ -7,6 +7,12 @@ public class Basket {
 	int totalD;
 	int totalE;
 	
+	Item itemA = new Item('A',50);
+	Item itemB = new Item('B',30);
+	Item itemC = new Item('C',20);
+	Item itemD = new Item('D',15);
+	Item itemE = new Item('E',40);
+	
 	public Basket() {
 		totalA=0;
 		totalB=0;
@@ -33,11 +39,14 @@ public class Basket {
 			break;
 		default:
 			throw new Exception();
-				
 		}
 	}
 	
+	public int checkTotals() {
+		
+	}
 }
+
 
 
 
