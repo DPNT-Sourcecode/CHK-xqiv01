@@ -29,5 +29,13 @@ public class Item {
 	public int getQtyForSpecial() {
 		return qtyForSpecial;
 	}
+	public int checkCost(int qty) {
+		if (specialAvailable) {
+			// calculate for the special price based on remainder and division of total quantity
+			return (qty%qtyForSpecial*unitPrice)+(qty/qtyForSpecial*priceForSpecial);
+		}
+		return qty * unitPrice;
+	}
 }
+
 

@@ -9,12 +9,18 @@ public class CheckoutSolution {
     	
     	int totalCost = 0;
     	char [] items = skus.toCharArray();
+    	
     	Item itemA = new Item('A',50);
     	itemA.setSpecial(3, 130);
     	Item itemB = new Item('B',30);
     	itemB.setSpecial(2, 45);
     	Item itemC = new Item('C',20);
     	Item itemD = new Item('D',15);
+    	
+    	int totalA=0;
+    	int totalB=0;
+    	int totalC=0;
+    	int totalD=0;
     	
     	// buying no items is no cost but shouldn't be considered an illegal input
     	if (skus.isEmpty()) return 0;
@@ -49,4 +55,5 @@ public class CheckoutSolution {
     	
     }
 }
+
 
