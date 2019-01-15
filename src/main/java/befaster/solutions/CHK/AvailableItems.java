@@ -37,6 +37,3 @@ public class AvailableItems {
 		return itemSet.get(sku);
 	}
 }
-
-
-
