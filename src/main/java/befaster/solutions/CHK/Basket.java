@@ -21,6 +21,7 @@ public class Basket {
 		totalE=0;
 	}
 	public void addItem(char sku) throws Exception {
+		// add to SKU item sum if it is a valid SKU 
 		switch (sku) {
 		case 'A':
 			totalA++;
@@ -42,7 +43,16 @@ public class Basket {
 		}
 	}
 	
+	// calculations for the total cost for each item
 	public int checkTotals() {
+		int totalCost = 0;
 		
+		totalCost += itemA.checkCost(totalA);
+		totalCost += itemB.checkCost(totalB);
+		totalCost += itemC.checkCost(totalC);
+		totalCost += itemD.checkCost(totalD);
+		
+		return totalCost;
 	}
 }
+
