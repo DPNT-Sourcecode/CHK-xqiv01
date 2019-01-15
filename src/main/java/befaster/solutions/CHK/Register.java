@@ -6,33 +6,6 @@ public class Register {
 	HashMap<Item, Integer> itemsInBasket;
 	AvailableItems allItems;
 	
-	Item itemA = new Item('A',50);
-	Item itemB = new Item('B',30);
-	Item itemC = new Item('C',20);
-	Item itemD = new Item('D',15);
-	Item itemE = new Item('E',40);
-	Item itemF = new Item('F',10);
-	Item itemG = new Item('G',20);
-	Item itemH = new Item('H',10);
-	Item itemI = new Item('I',35);
-	Item itemJ = new Item('J',60);
-	Item itemK = new Item('K',80);
-	Item itemL = new Item('L',90);
-	Item itemM = new Item('M',15);
-	Item itemN = new Item('N',40);
-	Item itemO = new Item('O',10);
-	Item itemP = new Item('P',50);
-	Item itemQ = new Item('Q',30);
-	Item itemR = new Item('R',50);
-	Item itemS = new Item('S',30);
-	Item itemT = new Item('T',20);
-	Item itemU = new Item('U',40);
-	Item itemV = new Item('V',50);
-	Item itemW = new Item('W',20);
-	Item itemX = new Item('X',90);
-	Item itemY = new Item('Y',10);
-	Item itemZ = new Item('Z',50);
-	
 	public Register (Basket shopping) {
 		this.itemsInBasket = shopping.itemsInBasket;
 		this.allItems = shopping.itemsAvail;
@@ -43,7 +16,45 @@ public class Register {
 			int totalCost = 0;
 			
 			//total count for items
-			int total;
+			int total=0;
+			
+			// Multi buy special (round 5)
+			Item itemS = allItems.getValidItem('S');
+			Item itemT = allItems.getValidItem('T');
+			Item itemX = allItems.getValidItem('X');
+			Item itemY = allItems.getValidItem('Y');
+			Item itemZ = allItems.getValidItem('Z');
+			total += itemsInBasket.get(itemS);
+			total += itemsInBasket.get(itemT);
+			total += itemsInBasket.get(itemX);
+			total += itemsInBasket.get(itemY);
+			total += itemsInBasket.get(itemZ);
+			while (total>3) {
+				totalCost+=45;
+				int currGroup = 3; // allows items to be removed from count 3 at a time in price priority for best customer outcome
+				if (itemsInBasket.get(itemZ)>currGroup) itemsInBasket.replace(itemZ, itemsInBasket.get(itemZ)-currGroup);
+				else {
+					currGroup-=itemsInBasket.get(itemZ);
+					if (itemsInBasket.get(itemS)>currGroup) itemsInBasket.replace(itemS, itemsInBasket.get(itemS)-currGroup);
+					else {
+						currGroup-=itemsInBasket.get(itemS);
+						if (itemsInBasket.get(itemT)>currGroup) itemsInBasket.replace(itemT, itemsInBasket.get(itemT)-currGroup);
+						else {
+							currGroup-=itemsInBasket.get(itemT);
+							if (itemsInBasket.get(itemY)>currGroup) itemsInBasket.replace(itemY, itemsInBasket.get(itemY)-currGroup);
+							else {
+								currGroup-=itemsInBasket.get(itemY);
+								if (itemsInBasket.get(itemX)>currGroup) itemsInBasket.replace(itemX, itemsInBasket.get(itemX)-currGroup);
+								else {
+									currGroup-=itemsInBasket.get(itemX);
+								
+								}
+							}
+						}
+					}
+				}
+				total-=3;
+			}
 			
 			// check for buy items/get free
 			Item buyItem;
@@ -166,4 +177,5 @@ public class Register {
 			return totalCost;
 		}
 }
+
 
