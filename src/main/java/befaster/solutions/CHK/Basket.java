@@ -1,11 +1,19 @@
 package befaster.solutions.CHK;
 
 public class Basket {
-	int totalA=0;
-	int totalB=0;
-	int totalC=0;
-	int totalD=0;
-	int totalE=0;
+	int totalA;
+	int totalB;
+	int totalC;
+	int totalD;
+	int totalE;
+	
+	public Basket() {
+		totalA=0;
+		totalB=0;
+		totalC=0;
+		totalD=0;
+		totalE=0;
+	}
 	public void addItem(char sku) throws Exception {
 		switch (sku) {
 		case 'A':
@@ -30,5 +38,6 @@ public class Basket {
 	}
 	
 }
+
 
 
