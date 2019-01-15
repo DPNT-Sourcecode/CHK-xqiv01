@@ -45,7 +45,10 @@ public class CheckoutSolution {
     					
     			}
     		}
-    		
+    		totalCost += itemA.checkCost(totalA);
+    		totalCost += itemB.checkCost(totalB);
+    		totalCost += itemC.checkCost(totalC);
+    		totalCost += itemD.checkCost(totalD);
     		
     		return totalCost;
     	}
@@ -55,5 +58,6 @@ public class CheckoutSolution {
     	
     }
 }
+
 
 
