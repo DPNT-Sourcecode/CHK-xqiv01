@@ -17,7 +17,8 @@ public class SumSolutionTest {
 
     @Test
     public void compute_sum() {
-        assertThat(chOut.checkout("ZZXYZ"), equalTo(82));
+        assertThat(chOut.checkout("ABEEBC"), equalTo(180));
     }
 }
+
 
