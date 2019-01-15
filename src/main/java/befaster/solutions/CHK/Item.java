@@ -37,5 +37,3 @@ public class Item {
 		return (qty/qtyForSpecial*priceForSpecial);
 	}
 }
-
-
