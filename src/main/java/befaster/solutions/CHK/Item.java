@@ -33,8 +33,9 @@ public class Item {
 		return qty * unitPrice;
 	}
 	public int checkSpecialCost(int qty) {
-		// calculate for the special price based on remainder and division of total quantity
-		return (qty%qtyForSpecial*unitPrice)+(qty/qtyForSpecial*priceForSpecial);
+		// calculate for the special price by division of total quantity - do not handle remainder
+		return (qty/qtyForSpecial*priceForSpecial);
 	}
 }
+
 
