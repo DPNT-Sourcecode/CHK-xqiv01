@@ -1,7 +1,10 @@
 package befaster.solutions.CHK;
 
+import java.util.HashMap;
+
 public class Register {
-	Basket shopping;
+	HashMap<Item, Integer> itemsInBasket;
+	AvailableItems allItems;
 	
 	Item itemA = new Item('A',50);
 	Item itemB = new Item('B',30);
@@ -31,12 +34,28 @@ public class Register {
 	Item itemZ = new Item('Z',50);
 	
 	public Register (Basket shopping) {
-		this.shopping = shopping;
+		this.itemsInBasket = shopping.itemsInBasket;
+		this.allItems = shopping.itemsAvail;
 	}
 	
 	// calculations for the total cost for each item
 		public int checkTotals() {
 			int totalCost = 0;
+			// check for buy items/get free
+			itemsInBasket.getOrDefault(allItems.getValidItem('A'), defaultValue)
+			
+			//apply specials
+			
+			if (itemsInBasket.containsKey(allItems.getValidItem('A'))) {
+				Item itemA = itemsInBasket
+			}
+			
+			//calculate remainder
+			for(Item currItem: itemsInBasket.keySet()) {
+				totalCost += currItem.checkCost(itemsInBasket.get(currItem));
+			}
+			
+			
 			//check for specials of item A in multiples of 5
 			itemA.setSpecial(5, 200);
 			totalCost += itemA.checkSpecialCost(shopping.totalA);
@@ -45,8 +64,7 @@ public class Register {
 			itemA.setSpecial(3, 130);
 			totalCost += itemA.checkSpecialCost(shopping.totalA);
 			shopping.totalA %= 3;
-			//check total cost of item A after specials applied
-			totalCost += itemA.checkCost(shopping.totalA);
+			
 			// remove one free B item for every 2 E items
 			shopping.totalB -= shopping.totalE/2;
 			if (shopping.totalB <0) shopping.totalB=0;
@@ -146,3 +164,4 @@ public class Register {
 			return totalCost;
 		}
 }
+
