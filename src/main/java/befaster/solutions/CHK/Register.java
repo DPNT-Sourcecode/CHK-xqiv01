@@ -24,29 +24,29 @@ public class Register {
 			Item itemX = allItems.getValidItem('X');
 			Item itemY = allItems.getValidItem('Y');
 			Item itemZ = allItems.getValidItem('Z');
-			total += itemsInBasket.get(itemS);
-			total += itemsInBasket.get(itemT);
-			total += itemsInBasket.get(itemX);
-			total += itemsInBasket.get(itemY);
-			total += itemsInBasket.get(itemZ);
-			while (total>3) {
+			total += itemsInBasket.getOrDefault(itemS,0);
+			total += itemsInBasket.getOrDefault(itemT,0);
+			total += itemsInBasket.getOrDefault(itemX,0);
+			total += itemsInBasket.getOrDefault(itemY,0);
+			total += itemsInBasket.getOrDefault(itemZ,0);
+			while (total>=3) {
 				totalCost+=45;
 				int currGroup = 3; // allows items to be removed from count 3 at a time in price priority for best customer outcome
-				if (itemsInBasket.get(itemZ)>currGroup) itemsInBasket.replace(itemZ, itemsInBasket.get(itemZ)-currGroup);
+				if (itemsInBasket.getOrDefault(itemZ,0)>=currGroup) itemsInBasket.replace(itemZ, itemsInBasket.get(itemZ)-currGroup);
 				else {
-					currGroup-=itemsInBasket.get(itemZ);
-					if (itemsInBasket.get(itemS)>currGroup) itemsInBasket.replace(itemS, itemsInBasket.get(itemS)-currGroup);
+					currGroup-=itemsInBasket.getOrDefault(itemZ,0);
+					if (itemsInBasket.getOrDefault(itemS,0)>=currGroup) itemsInBasket.replace(itemS, itemsInBasket.get(itemS)-currGroup);
 					else {
-						currGroup-=itemsInBasket.get(itemS);
-						if (itemsInBasket.get(itemT)>currGroup) itemsInBasket.replace(itemT, itemsInBasket.get(itemT)-currGroup);
+						currGroup-=itemsInBasket.getOrDefault(itemS,0);
+						if (itemsInBasket.getOrDefault(itemT,0)>=currGroup) itemsInBasket.replace(itemT, itemsInBasket.get(itemT)-currGroup);
 						else {
-							currGroup-=itemsInBasket.get(itemT);
-							if (itemsInBasket.get(itemY)>currGroup) itemsInBasket.replace(itemY, itemsInBasket.get(itemY)-currGroup);
+							currGroup-=itemsInBasket.getOrDefault(itemT,0);
+							if (itemsInBasket.getOrDefault(itemY,0)>=currGroup) itemsInBasket.replace(itemY, itemsInBasket.get(itemY)-currGroup);
 							else {
-								currGroup-=itemsInBasket.get(itemY);
-								if (itemsInBasket.get(itemX)>currGroup) itemsInBasket.replace(itemX, itemsInBasket.get(itemX)-currGroup);
+								currGroup-=itemsInBasket.getOrDefault(itemY,0);
+								if (itemsInBasket.getOrDefault(itemX,0)>=currGroup) itemsInBasket.replace(itemX, itemsInBasket.get(itemX)-currGroup);
 								else {
-									currGroup-=itemsInBasket.get(itemX);
+									currGroup-=itemsInBasket.getOrDefault(itemX,0);
 								
 								}
 							}
@@ -177,3 +177,4 @@ public class Register {
 			return totalCost;
 		}
 }
+
