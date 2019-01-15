@@ -14,6 +14,7 @@ public class Basket {
 		totalC=0;
 		totalD=0;
 		totalE=0;
+		totalF=0;
 	}
 	public void addItem(char sku) throws Exception {
 		// add to SKU item sum if it is a valid SKU 
@@ -33,6 +34,9 @@ public class Basket {
 		case 'E':
 			totalE++;
 			break;
+		case 'F':
+			totalF++;
+			break;
 		default:
 			throw new Exception();
 		}
@@ -40,6 +44,3 @@ public class Basket {
 	
 	
 }
-
-
-
