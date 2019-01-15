@@ -30,10 +30,11 @@ public class Item {
 		return qtyForSpecial;
 	}
 	public int checkCost(int qty) {
-		if (specialAvailable) {
-			// calculate for the special price based on remainder and division of total quantity
-			return (qty%qtyForSpecial*unitPrice)+(qty/qtyForSpecial*priceForSpecial);
-		}
 		return qty * unitPrice;
 	}
+	public int checkSpecialCost(int qty) {
+		// calculate for the special price based on remainder and division of total quantity
+		return (qty%qtyForSpecial*unitPrice)+(qty/qtyForSpecial*priceForSpecial);
+	}
 }
+
