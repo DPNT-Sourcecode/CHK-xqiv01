@@ -3,7 +3,7 @@ package befaster.solutions.CHK;
 import java.util.HashMap;
 
 public class AvailableItems {
-	HashMap itemSet = new HashMap<>();
+	HashMap<Character, Item> itemSet = new HashMap<Character, Item>();
 	public AvailableItems() {
 		itemSet.put('A',new Item('A',50));
 		itemSet.put('B',new Item('B',30));
@@ -33,9 +33,10 @@ public class AvailableItems {
 		itemSet.put('Z',new Item('Z',50));
 	}
 	
-	public Item getValidItem (char sku) {
-		return (Item) itemSet.get(sku);
+	public Item getValidItem (char sku) throws Exception{
+		return itemSet.get(sku);
 	}
 }
+
 
 
