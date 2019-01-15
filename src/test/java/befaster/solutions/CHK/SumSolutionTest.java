@@ -20,5 +20,3 @@ public class SumSolutionTest {
         assertThat(chOut.checkout("XYZ"), equalTo(45));
     }
 }
-
-
