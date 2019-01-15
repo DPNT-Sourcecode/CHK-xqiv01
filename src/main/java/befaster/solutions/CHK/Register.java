@@ -36,27 +36,60 @@ public class Register {
 			total += totalZ;
 			while (total>=3) {
 				int currGroup = 3; // allows items to be removed from count 3 at a time in price priority for best customer outcome
-								
+				// check item Z first as it has highest value				
 				if (totalZ>0&&currGroup>0) {
-					if (totalZ>=3) currGroup-=3;
-					else currGroup-=totalZ;
+					if (totalZ>=currGroup) {
+						totalZ -=currGroup;
+						currGroup=0;
+					}
+					else {
+						currGroup-=totalZ;
+						totalZ=0;
+					}
 				}
-				
+				// check item S second as it has second highest value
 				if (totalS>0&&currGroup>0) {
-					if (totalS>=3) currGroup-=3;
-					else currGroup-=totalS;
+					if (totalS>=currGroup) {
+						totalS -=currGroup;
+						currGroup=0;
+					}
+					else {
+						currGroup-=totalS;
+						totalS=0;
+					}
 				}
+				// check item T second as it has second highest value
 				if (totalT>0&&currGroup>0) {
-					if (totalT>=3) currGroup-=3;
-					else currGroup-=totalT;
+					if (totalT>=currGroup) {
+						totalT -=currGroup;
+						currGroup=0;
+					}
+					else {
+						currGroup-=totalT;
+						totalT=0;
+					}
 				}
+				// check item Y second as it has second highest value
 				if (totalY>0&&currGroup>0) {
-					if (totalY>=3) currGroup-=3;
-					else currGroup-=totalY;
+					if (totalY>=currGroup) {
+						totalY -=currGroup;
+						currGroup=0;
+					}
+					else {
+						currGroup-=totalY;
+						totalY=0;
+					}
 				}
+				// check item X last as it has lowest value
 				if (totalX>0&&currGroup>0) {
-					if (totalX>=3) currGroup-=3;
-					else currGroup-=totalX;
+					if (totalX>=currGroup) {
+						totalX -=currGroup;
+						currGroup=0;
+					}
+					else {
+						currGroup-=totalX;
+						totalX=0;
+					}
 				}
 				
 				totalCost+=45;				
@@ -67,11 +100,7 @@ public class Register {
 			itemsInBasket.replace(itemT, totalT);
 			itemsInBasket.replace(itemY, totalY);
 			itemsInBasket.replace(itemX, totalX);
-			System.out.println("curr:"+totalCost);
-			System.out.println(itemsInBasket.getOrDefault(itemX,0));
-			System.out.println(itemsInBasket.getOrDefault(itemY,0));
-			System.out.println(itemsInBasket.getOrDefault(itemZ,0));
-			
+						
 			// check for buy items/get free
 			Item buyItem;
 			Item freeItem;
@@ -193,3 +222,4 @@ public class Register {
 			return totalCost;
 		}
 }
+
