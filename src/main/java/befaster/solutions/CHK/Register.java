@@ -45,9 +45,71 @@ public class Register {
 			itemsInBasket.getOrDefault(allItems.getValidItem('A'), defaultValue)
 			
 			//apply specials
-			
-			if (itemsInBasket.containsKey(allItems.getValidItem('A'))) {
-				Item itemA = itemsInBasket
+			int total;
+			Item specialItem = allItems.getValidItem('A');
+			if (itemsInBasket.containsKey(specialItem)) {
+				total = itemsInBasket.get(specialItem);
+				specialItem.setSpecial(5, 200);
+				totalCost += specialItem.checkSpecialCost(total);
+				total %= 5;
+				specialItem.setSpecial(3, 130);
+				totalCost += specialItem.checkSpecialCost(total);
+				total %= 3;
+				itemsInBasket.replace(specialItem, total);
+			}
+			specialItem = allItems.getValidItem('B');
+			if (itemsInBasket.containsKey(specialItem)) {
+				total = itemsInBasket.get(specialItem);
+				specialItem.setSpecial(2, 45);
+				totalCost += specialItem.checkSpecialCost(total);
+				total %= 2;
+				itemsInBasket.replace(specialItem, total);
+			}
+			specialItem = allItems.getValidItem('H');
+			if (itemsInBasket.containsKey(specialItem)) {
+				total = itemsInBasket.get(specialItem);
+				specialItem.setSpecial(10, 80);
+				totalCost += specialItem.checkSpecialCost(total);
+				total %= 10;
+				specialItem.setSpecial(5, 45);
+				totalCost += specialItem.checkSpecialCost(total);
+				total %= 5;
+				itemsInBasket.replace(specialItem, total);
+			}
+			specialItem = allItems.getValidItem('K');
+			if (itemsInBasket.containsKey(specialItem)) {
+				total = itemsInBasket.get(specialItem);
+				specialItem.setSpecial(2, 120);
+				totalCost += specialItem.checkSpecialCost(total);
+				total %= 2;
+				itemsInBasket.replace(specialItem, total);
+			}
+			specialItem = allItems.getValidItem('P');
+			if (itemsInBasket.containsKey(specialItem)) {
+				total = itemsInBasket.get(specialItem);
+				specialItem.setSpecial(5, 200);
+				totalCost += specialItem.checkSpecialCost(total);
+				total %= 5;
+				itemsInBasket.replace(specialItem, total);
+			}
+			specialItem = allItems.getValidItem('Q');
+			if (itemsInBasket.containsKey(specialItem)) {
+				total = itemsInBasket.get(specialItem);
+				specialItem.setSpecial(3, 80);
+				totalCost += specialItem.checkSpecialCost(total);
+				total %= 3;
+				itemsInBasket.replace(specialItem, total);
+			}
+			specialItem = allItems.getValidItem('V');
+			if (itemsInBasket.containsKey(specialItem)) {
+				total = itemsInBasket.get(specialItem);
+				specialItem.setSpecial(3, 130);
+				totalCost += specialItem.checkSpecialCost(total);
+				total %= 3;
+				specialItem.setSpecial(2, 90);
+				totalCost += specialItem.checkSpecialCost(total);
+				total %= 2;
+				itemsInBasket.replace(specialItem, total);
 			}
 			
 			//calculate remainder
@@ -56,15 +118,7 @@ public class Register {
 			}
 			
 			
-			//check for specials of item A in multiples of 5
-			itemA.setSpecial(5, 200);
-			totalCost += itemA.checkSpecialCost(shopping.totalA);
-			shopping.totalA %= 5;
-			//check for specials of item A in multiples of 3
-			itemA.setSpecial(3, 130);
-			totalCost += itemA.checkSpecialCost(shopping.totalA);
-			shopping.totalA %= 3;
-			
+						
 			// remove one free B item for every 2 E items
 			shopping.totalB -= shopping.totalE/2;
 			if (shopping.totalB <0) shopping.totalB=0;
@@ -164,4 +218,5 @@ public class Register {
 			return totalCost;
 		}
 }
+
 
