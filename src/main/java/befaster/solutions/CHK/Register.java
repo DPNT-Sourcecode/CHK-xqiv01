@@ -110,5 +110,3 @@ public class Register {
 			return totalCost;
 		}
 }
-
-
