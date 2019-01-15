@@ -18,8 +18,9 @@ public class CheckoutSolution {
     		for (char item:items) {
     			allItems.addItem(item); //add each character (item sku) to basket
     		}
+    		Register checkingOut = new Register (allItems);
     		
-    		return allItems.checkTotals();
+    		return checkingOut.checkTotals();
     	}
     	catch (Exception e) {
     		return -1;
@@ -27,4 +28,5 @@ public class CheckoutSolution {
     	
     }
 }
+
 
