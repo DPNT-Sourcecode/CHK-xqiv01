@@ -55,6 +55,10 @@ public class Register {
 				}
 				total-=3;
 			}
+			System.out.println("curr:"+totalCost);
+			System.out.println(itemsInBasket.getOrDefault(itemX,0));
+			System.out.println(itemsInBasket.getOrDefault(itemY,0));
+			System.out.println(itemsInBasket.getOrDefault(itemZ,0));
 			
 			// check for buy items/get free
 			Item buyItem;
@@ -177,4 +181,5 @@ public class Register {
 			return totalCost;
 		}
 }
+
 
